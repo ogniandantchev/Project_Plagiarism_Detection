@@ -9,7 +9,8 @@ import pandas as pd
 # Import joblib package directly
 import joblib
 
-## TODO: Import any additional libraries you need to define a model
+## Import any additional libraries you need to define a model
+from sklearn.svm import LinearSVC
 
 
 # Provided model load function
@@ -26,7 +27,7 @@ def model_fn(model_dir):
     return model
 
 
-## TODO: Complete the main code
+## Complete the main code
 if __name__ == '__main__':
     
     # All of the model parameters and training parameters are sent as arguments
@@ -41,7 +42,10 @@ if __name__ == '__main__':
     parser.add_argument('--model-dir', type=str, default=os.environ['SM_MODEL_DIR'])
     parser.add_argument('--data-dir', type=str, default=os.environ['SM_CHANNEL_TRAIN'])
     
-    ## TODO: Add any additional arguments that you will need to pass into your model
+    ## Add any additional arguments that you will need to pass into your model
+    parser.add_argument('--n_estimators', type=int, default=60)
+    parser.add_argument('--max_depth', type=int, default=5)
+ 
     
     # args holds all passed-in arguments
     args = parser.parse_args()
@@ -57,14 +61,11 @@ if __name__ == '__main__':
     
     ## --- Your code here --- ##
     
-
-    ## TODO: Define a model 
-    model = None
+    ## Define a model 
+    model = LinearSVC()
     
-    
-    ## TODO: Train the model
-    
-    
+    ## Train the model
+    model.fit(train_x, train_y)
     
     ## --- End of your code  --- ##
     
