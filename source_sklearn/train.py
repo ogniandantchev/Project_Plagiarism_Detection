@@ -7,7 +7,9 @@ import pandas as pd
 # sklearn.externals.joblib is deprecated in 0.21 and will be removed in 0.23. 
 # from sklearn.externals import joblib
 # Import joblib package directly
-import joblib
+# import joblib
+from sklearn.externals import joblib
+# because it's June 2021 and the current stable version of NumPy is 1.20.3
 
 ## Import any additional libraries you need to define a model
 from sklearn.svm import LinearSVC
